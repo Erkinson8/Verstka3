@@ -41,15 +41,18 @@ public class MainActivity extends AppCompatActivity {
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                updateLoginButtonBackground();}
+                updateLoginButtonBackground();
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
-                updateLoginButtonBackground();}
+                updateLoginButtonBackground();
+            }
         });
 
 
@@ -60,11 +63,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                updateLoginButtonBackground();}
+                updateLoginButtonBackground();
+            }
 
             @Override
             public void afterTextChanged(Editable s) {
-                updateLoginButtonBackground();}
+                updateLoginButtonBackground();
+            }
         });
 
 
@@ -81,15 +86,19 @@ public class MainActivity extends AppCompatActivity {
                 button1.setVisibility(View.GONE);
                 text.setVisibility(View.VISIBLE);
             } else {
-                Toast.makeText(MainActivity.this, "Неправильный логин и пароль", Toast.LENGTH_SHORT).show();}
+                Toast.makeText(MainActivity.this, "Неправильный логин и пароль", Toast.LENGTH_SHORT).show();
+            }
         });
     }
+
     private void updateLoginButtonBackground() {
-            boolean hasText = editText.getText().length() > 0 || editText1.getText().length() > 0;
-            int backgroundColor = hasText ? R.color.orange : R.color.gray1;
-            button.setBackgroundColor(getResources().getColor(backgroundColor));
+        boolean hasText = editText.getText().length() > 0 || editText1.getText().length() > 0;
+        int backgroundColor = hasText ? R.color.orange : R.color.gray1;
+        button.setBackgroundColor(getResources().getColor(backgroundColor));
     }
-    }
+}
+
+
 
 
 
