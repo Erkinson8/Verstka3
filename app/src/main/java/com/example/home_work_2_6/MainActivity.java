@@ -4,8 +4,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import android.widget.Toast;
 import android.view.View;
 import android.widget.TextView;
@@ -76,7 +79,12 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(v -> {
             if (editText.getText().toString().equals("admin") && editText1.getText().toString().equals("admin")) {
 
-                Toast.makeText(MainActivity.this, "Вы успешно зарегистрировались", Toast.LENGTH_SHORT).show();
+                Snackbar.make(button, "Вы успешно зарегистрировались", Snackbar.LENGTH_SHORT).show();
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(button.getWindowToken(), 0);
+                }
                 editText.setVisibility(View.GONE);
                 editText1.setVisibility(View.GONE);
                 button.setVisibility(View.GONE);
@@ -86,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 button1.setVisibility(View.GONE);
                 text.setVisibility(View.VISIBLE);
             } else {
-                Toast.makeText(MainActivity.this, "Неправильный логин и пароль", Toast.LENGTH_SHORT).show();
+                Snackbar.make(button, "Неправильный логин и пароль", Snackbar.LENGTH_SHORT).show();
             }
         });
     }
@@ -97,9 +105,3 @@ public class MainActivity extends AppCompatActivity {
         button.setBackgroundColor(getResources().getColor(backgroundColor));
     }
 }
-
-
-
-
-
-
